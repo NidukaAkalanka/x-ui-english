@@ -49,7 +49,7 @@
                                 <a-button type="primary" @click="openAddInbound">Add</a-button>
                                 <a-button type="primary" @click="resetAllTraffic">Reset Traffic</a-button>
                             </div>
-                            <a-input v-model="searchKey" placeholder="搜索" autofocus style="max-width: 300px"></a-input>
+                            <a-input v-model="searchKey" placeholder="Search" autofocus style="max-width: 300px"></a-input>
                             <a-table :columns="columns" :row-key="dbInbound => dbInbound.id" :data-source="dbInbounds"
                                 :loading="spinning" :scroll="{ x: 1500 }" :pagination="false" style="margin-top: 20px"
                                 @change="() => getDBInbounds()">
