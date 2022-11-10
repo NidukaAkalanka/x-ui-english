@@ -13,14 +13,16 @@ Kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) and [Yu F
 - Traffic statistics, limit traffic, limit expiration time
 - Customizable xray configuration templates
 - Support https access panel (bring your own domain name + ssl certificate)
+- Multi UUIDs can be added as users for Vmess and Vless configurations
 - Support one-click SSL certificate application and automatic renewal
+- Can be securely migrated from v2-ui 
 - For more advanced configuration items, see the panel for details
 
 # Preview
-
 ![](media/Capture.PNG)
 ![](media/Capture2.PNG)
-
+# Telegram Bot Preview 
+![](media/TelegramBot.jpg)
 
 # Single Command Install & upgrade
 
@@ -37,7 +39,6 @@ bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/ma
 > If your server cpu architecture is not `amd64`, replace `amd64` in the command with another architecture
 
 ````
-cd
 rm x-ui/ /usr/local/x-ui/ /usr/bin/x-ui -rf
 tar zxvf x-ui-linux-amd64.tar.gz
 chmod +x x-ui/x-ui x-ui/bin/xray-linux-* x-ui/x-ui.sh
@@ -78,13 +79,11 @@ docker build -t x-ui .
 
 ## SSL certificate application
 
-> This function and tutorial are provided by [FranzKafkaYu](https://github.com/FranzKafkaYu)
+The script has 2 built-in SSL certificate application functions. Using a sub-domain is recommended.
+- ### 1st Method (Recommended. Works for almost any TLD including Freenom free TLDs)
+To use this method to apply for a certificate, your server's IP addres being correctly pointed to a domain or subdomain that you own is the only requirement. (Acme.sh script's 3rd option)
 
-The script has 2 built-in SSL certificate application functions. 
-- ### 1st Method (Recommended)
-To use this method to apply for a certificate, your server's IP addres being correctly pointed to a domain or subdomain that you own is the only requirement.
-
-- ### 2nd Method (Use if the above one fails)
+- ### 2nd Method (Use if the above one fails. Would not work for Freenom free TLDs)
 This is not beginner frienly as much as the first one. To use this method, all of the follwoing prerequisites should be met:
 - Knowing the Cloudflare registered email address
 - Knowing the Cloudflare Global API Key
@@ -103,8 +102,8 @@ When using, just enter `domain name`, `email`, `API KEY`, the diagram is as foll
 Precautions:
 
 - The script uses DNS API for certificate request
-- Use Let'sEncrypt as the CA party by default
-- The certificate installation directory is the /root/cert directory
+- Use Let'sEncrypt as the CA party by default. You can choose between Zerossl.com or Buypass.com
+- The certificate installation directory is the /root/ directory
 - The certificates applied for by this script are all generic domain name certificates
 
 
@@ -114,20 +113,16 @@ Precautions:
 - Ubuntu 16+
 - Debian 8+
 
-# Common problem
+## Telegram Bot Setup Guie
+-----still working------
 
-## Migrating from v2-ui
-
-First install the latest version of x-ui on the server where v2-ui is installed, and then use the following command to migrate, which will migrate `all inbound account data` of the local v2-ui to x-ui, `panel settings and username and password will not migrate`
-
-> After the migration is successful, please `close v2-ui` and `restart x-ui`, otherwise the inbound of v2-ui will cause a `port conflict` with the inbound of x-ui
-
-````
-x-ui v2-ui
-````
+## Note for Beginner Devs
+-----still working------
 
 ## Issues Fixed until the latest update
 
-- GLIBC 2.28 Not Found -- Fixed 
-- Workflow error on TG Bot -- Fixed (TG Bot feature temporarily removed)
-- One-click SSL installation -- Fixed 
+- GLIBC 2.28 Not Found -- Fixed on 0.1
+- Workflow error on TG Bot -- Fixed on 0.1
+- One-click SSL installation -- Fixed on 0.1.1
+- Multi-user IDs for Vmess and Vless -- Fixed on 0.2
+- Telegram bot implementation -- Fixed on 0.2
