@@ -153,7 +153,7 @@ panel_config() {
     yellow "For security reasons, after the installation/ update, you need to remember the port and the account password"
     read -rp "Please set the login user name [default is a random user name]: " config_account
     [[ -z $config_account ]] && config_account=$(date +%s%N | md5sum | cut -c 1-8)
-    read -rp "Please set the login password [default is a random password]: " config_password
+    read -rp "Please set the login password. Don't include spaces [default is a random password]: " config_password
     [[ -z $config_password ]] && config_password=$(date +%s%N | md5sum | cut -c 1-8)
     read -rp "Please set the panel access port [default is a random port]: " config_port
     [[ -z $config_port ]] && config_port=$(shuf -i 1000-65535 -n 1)
