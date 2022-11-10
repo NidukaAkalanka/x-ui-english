@@ -387,7 +387,7 @@ show_status() {
     check_status
     case $? in
         0)
-            echo -e "Panel state: $RunEEN}Running${PLAIN}"
+            echo -e "Panel state: ${GREEN}Running${PLAIN}"
             show_enable_status
         ;;
         1)
