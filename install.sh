@@ -93,7 +93,7 @@ check_status(){
 }
 
 install_base(){
-    if [[ ! $SYSTEM == "CentOS"]] then
+    if [[ ! $SYSTEM == "CentOS"]];
         sudo yum update
         yum install wget curl tar -y
     else
