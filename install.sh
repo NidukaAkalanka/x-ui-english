@@ -93,13 +93,15 @@ check_status(){
 }
 
 install_base(){
-    if [[ ! $SYSTEM == "CentOS"]];
-        sudo yum update
-        yum install wget curl tar -y
-    else
-        apt-get update && apt-get upgrade -y
-        apt install wget curl tar -y
-    fi 
+    if [[ ! $SYSTEM == "CentOS" ]]; then
+        ${PACKAGE_UPDATE[int]}
+    fi
+    if [[ -z $(type -P curl) ]]; then
+        ${PACKAGE_INSTALL[int]} curl
+    fi
+    if [[ -z $(type -P tar) ]]; then
+        ${PACKAGE_INSTALL[int]} tar
+    fi   
     check_status
 }
 
