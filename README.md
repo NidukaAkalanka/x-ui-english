@@ -118,7 +118,7 @@ Precautions:
 
 ## Telegram Bot Setup Guie
 Follow these steps correclty to activate X-UI English Telegram Bot:
--------------------still working-----------------------------------------------
+-------------------still working--------------
 
 ## Note for Beginner Devs
 Hey Beginner Developer! Appreciate your intrest on playing the codes with this repository. I have seen many people who are not much familiar with none of the languages used here, but still need to do some modifications such as translating the UIs to their native language, modifying telegram bot functions and etc... But after they are done with all of these code modifications, some of them having hard times converting their code into a binary. So they contact me and I have to repeatedly tell them the same procedure. So, here's how you can do it by yourself.
@@ -128,7 +128,7 @@ Hey Beginner Developer! Appreciate your intrest on playing the codes with this r
  
  If you are looking to modify Telegram Bot functions, the Bot's code lives at `/web/serv`
 Happy Coding! 
-
+-------------------still working--------------
 ## Issues Fixed until the latest update
 
 - GLIBC 2.28 Not Found -- Fixed on 0.1
