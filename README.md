@@ -1,7 +1,9 @@
 # X-UI ENGLISH VERSION
 
-Another Translated-to-English Version of X-UI
-Kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) and [Yu FranzKafka's x-ui](https://github.com/vaxilu/x-ui), forked from [vaxilu's awesome repo](https://github.com/vaxilu/x-ui/) which is a Multi-protocol Multi-user Xray Panel
+Another Translated-to-English Version of X-UI. 
+ 
+A furthur development from [my previous repo](https://github.com/NidukaAkalanka/x-ui-english.old) and
+kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) + [Yu FranzKafka's x-ui](https://github.com/vaxilu/x-ui), forked from [vaxilu's awesome project](https://github.com/vaxilu/x-ui/) which is a Multi-protocol Multi-user Xray Panel
 
 # Features
 
@@ -14,6 +16,7 @@ Kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) and [Yu F
 - Customizable xray configuration templates
 - Support https access panel (bring your own domain name + ssl certificate)
 - Multi UUIDs can be added as users for Vmess and Vless configurations
+- Telegram Bot for basic functions and noticifactions
 - Support one-click SSL certificate application and automatic renewal
 - Can be securely migrated from v2-ui 
 - For more advanced configuration items, see the panel for details
@@ -22,7 +25,7 @@ Kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) and [Yu F
 ![](media/Capture.PNG)
 ![](media/Capture2.PNG)
 # Telegram Bot Preview 
-![](media/TelegramBot.jpg)
+![](media/TelegramBot.PNG)
 
 # Single Command Install & upgrade
 
@@ -114,10 +117,17 @@ Precautions:
 - Debian 8+
 
 ## Telegram Bot Setup Guie
------still working------
+Follow these steps correclty to activate X-UI English Telegram Bot:
+-------------------still working-----------------------------------------------
 
 ## Note for Beginner Devs
------still working------
+Hey Beginner Developer! Appreciate your intrest on playing the codes with this repository. I have seen many people who are not much familiar with none of the languages used here, but still need to do some modifications such as translating the UIs to their native language, modifying telegram bot functions and etc... But after they are done with all of these code modifications, some of them having hard times converting their code into a binary. So they contact me and I have to repeatedly tell them the same procedure. So, here's how you can do it by yourself.
+- Head to `Your fork repository link`/actions . Enable Github Actions if it isn't yet.
+- Click on Relese X-ui under All workflows
+- Finally, click Run workflow twice. Wait untill the workflow run finishes. Once finished, you will find a release packages with your modifications at `Your fork repository link`/releases
+ 
+ If you are looking to modify Telegram Bot functions, the Bot's code lives at `/web/serv`
+Happy Coding! 
 
 ## Issues Fixed until the latest update
 
@@ -126,3 +136,4 @@ Precautions:
 - One-click SSL installation -- Fixed on 0.1.1
 - Multi-user IDs for Vmess and Vless -- Fixed on 0.2
 - Telegram bot implementation -- Fixed on 0.2
+- Release packages being much heavier in size -- Fixed on 0.2
