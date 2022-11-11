@@ -126,9 +126,10 @@ Hey Beginner Developer! Appreciate your intrest on playing the codes with this r
 - Click on Relese X-ui under All workflows
 - Finally, click Run workflow twice. Wait untill the workflow run finishes. Once finished, you will find a release packages with your modifications at `Your fork repository link`/releases
  
- If you are looking to modify Telegram Bot functions, the Bot's code lives at `/web/serv`
-Happy Coding! 
--------------------still working--------------
+If you are looking to modify Telegram Bot functions, the Bot's code lives at `/web/service/telegram.go`
+
+**Happy Coding, Beginner Dev!** 
+
 ## Issues Fixed until the latest update
 
 - GLIBC 2.28 Not Found -- Fixed on 0.1
