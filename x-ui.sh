@@ -474,18 +474,17 @@ check_login_info(){
 }
 
 show_usage() {
-    green "X-UI v${last_version} Installation is Completed, The Panel has been Started"
+    green "X-UI English v${last_version} Installation is Completed, The Panel has been Started"
     echo -e ""
-    echo "----------------------------------------------------"
-    echo -e  " __  __          _   _ ___    "
-    echo -e  " \ \/ /         | | | |_ _|  "
-    echo -e  "  \  /   _____  | | | || |    "
-    echo -e  "  /  \  |_____| | |_| || |    "
-    echo -e  " /_/\_\          \___/|___|   "
-    echo "----------------------------------------------------"
-    echo ""
+    echo -e "--------------------------------------------------------"
+    echo -e  " __  __          _   _ ___   ___           _ _    _      "
+    echo -e  " \ \/ /         | | | |_ _| | __|_ _  __ _| (_)__| |_   "
+    echo -e  "  \  /   _____  | | | || |  | _|| ' \/ _` | | (_-< ' \  "
+    echo -e  "  /  \  |_____| | |_| || |  |___|_||_\__, |_|_/__/_||_|  "
+    echo -e  " /_/\_\          \___/|___|  ________ |___/ __________     "
+    echo -e "--------------------------------------------------------"
     echo -e "X-UI MANAGEMENT SCRIPT USAGE: "
-    echo -e "-------------------------------------------------"
+    echo -e "--------------------------------------------------------"
     echo -e "x-ui              - Show the management menu"
     echo -e "x-ui start        - Start X-UI panel"
     echo -e "x-ui stop         - Stop X-UI panel"
@@ -498,38 +497,46 @@ show_usage() {
     echo -e "x-ui update       - Update X-UI panel"
     echo -e "x-ui install      - Install X-UI panel"
     echo -e "x-ui uninstall    - Uninstall X-UI panel"
-    echo -e "----------------------------------------------------"
+    echo -e "-------------------------------------------------------"
     echo -e ""
 }
 
 show_menu() {
     echo -e "
-  ${GREEN}X-UI PANEL MANAGEMENT SCRIPT ${PLAIN}
+ ------------------------------------------------------------------ 
+  ${GREEN}   __  __          _   _ ___   ___           _ _    _     ${PLAIN} 
+  ${GREEN}   \ \/ /         | | | |_ _| | __|_ _  __ _| (_)__| |_   ${PLAIN}
+  ${GREEN}    \  /   _____  | | | || |  | _|| ' \/ _` | | (_-< ' \  ${PLAIN}
+  ${GREEN}    /  \  |_____| | |_| || |  |___|_||_\__, |_|_/__/_||_| ${PLAIN}
+  ${GREEN}   /_/\_\          \___/|___|  ________ |___/ __________  ${PLAIN}     
+------------------------------------------------------------------- 
+  ${GREEN}X-UI ENGLISH PANEL MANAGEMENT SCRIPT ${PLAIN}
+--------------------------------------------------------
   ${GREEN}0.${PLAIN} Exit Script
-————————————————
+--------------------------------------------------------
   ${GREEN}1.${PLAIN} Install X-UI
   ${GREEN}2.${PLAIN} Update X-UI
   ${GREEN}3.${PLAIN} Uninstalled X-UI
-————————————————
+--------------------------------------------------------
   ${GREEN}4.${PLAIN} Reset Username Password
   ${GREEN}5.${PLAIN} Reset Panel Settings
   ${GREEN}6.${PLAIN} Set the Panel Web Port
-————————————————
+--------------------------------------------------------
   ${GREEN}7.${PLAIN} Start X-UI
   ${GREEN}8.${PLAIN} Stop X-UI
   ${GREEN}9.${PLAIN} Restart X-UI
  ${GREEN}10.${PLAIN} Check X-UI Status
  ${GREEN}11.${PLAIN} View X-UI Log
-————————————————
+--------------------------------------------------------
  ${GREEN}12.${PLAIN} Set the X-UI auto-start at boot
  ${GREEN}13.${PLAIN} Cancel the X-UI auto-start at boot
-————————————————
+--------------------------------------------------------
  ${GREEN}14.${PLAIN} Update Geosite and Geoip
  ${GREEN}15.${PLAIN} One-click installation BBR (the latest kernel)
  ${GREEN}16.${PLAIN} One-click application certificate (ACME script application)
  ${GREEN}17.${PLAIN} Open all network ports in the server
  ${GREEN}18.${PLAIN} Install and configure Cloudflare Warp (Experimental)
-    "
+ --------------------------------------------------------   "
     show_status
     echo ""
     if [[ -n $v4 && -z $v6 ]]; then
