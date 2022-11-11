@@ -59,7 +59,7 @@ archAffix(){
 
 info_bar(){
     clear
-    echo -e "${GREEN} ----------------------------------------------------------------------${PLAIN}"
+    echo -e "${GREEN} --------------------------------------------------------------------- ${PLAIN}"
     echo -e "${GREEN}   __   __           _    _ _____    ______             _ _     _      ${PLAIN}"
     echo -e "${GREEN}   \ \ / /          | |  | |_   _|  |  ____|           | (_)   | |     ${PLAIN}"
     echo -e "${GREEN}    \ V /   ______  | |  | | | |    | |__   _ __   __ _| |_ ___| |__   ${PLAIN}"
@@ -68,7 +68,7 @@ info_bar(){
     echo -e "${GREEN}   /_/ \_\           \____/|_____|  |______|_| |_|\__, |_|_|___/_| |_| ${PLAIN}"
     echo -e "${GREEN}                                                  __/ |                ${PLAIN}"
     echo -e "${GREEN}                                                 |___/                 ${PLAIN}"
-    echo -e "${GREEN}-----------------------------------------------------------------------${PLAIN}"
+    echo -e "${GREEN} --------------------------------------------------------------------- ${PLAIN}"
     echo ""
     echo -e "OS: ${GREEN} ${CMD} ${PLAIN}"
     echo ""
@@ -206,7 +206,7 @@ install_xui() {
     rm -f install.sh
     green "X-UI v${last_version} Installation is Completed, The Panel has been Started"
     echo -e ""
-     echo -e "${GREEN} ----------------------------------------------------------------------${PLAIN}"
+     echo -e "${GREEN} -------------------------------------------------------------------- ${PLAIN}"
     echo -e "${GREEN}   __   __           _    _ _____    ______             _ _     _      ${PLAIN}"
     echo -e "${GREEN}   \ \ / /          | |  | |_   _|  |  ____|           | (_)   | |     ${PLAIN}"
     echo -e "${GREEN}    \ V /   ______  | |  | | | |    | |__   _ __   __ _| |_ ___| |__   ${PLAIN}"
@@ -215,7 +215,7 @@ install_xui() {
     echo -e "${GREEN}   /_/ \_\           \____/|_____|  |______|_| |_|\__, |_|_|___/_| |_| ${PLAIN}"
     echo -e "${GREEN}                                                  __/ |                ${PLAIN}"
     echo -e "${GREEN}                                                 |___/                 ${PLAIN}"
-    echo -e "${GREEN}-----------------------------------------------------------------------${PLAIN}"
+    echo -e "${GREEN} --------------------------------------------------------------------- ${PLAIN}"
     echo -e "X-UI MANAGEMENT SCRIPT USAGE: "
     echo -e "--------------------------------------------------"
     echo -e "x-ui              - Show the management menu"
