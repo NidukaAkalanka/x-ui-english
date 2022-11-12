@@ -22,10 +22,10 @@ kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) + [Yu Fra
 - For more advanced configuration items, see the panel for details
 
 # Preview
-![](media/Capture.PNG)
-![](media/Capture2.PNG)
+![](media/Web.PNG)
+![](media/PostInstallation.png)
 # Telegram Bot Preview 
-![](media/TelegramBot.PNG)
+![](media/TGBot1.PNG)![](media/TGBot2.PNG)
 
 # Single Command Install & upgrade
 
