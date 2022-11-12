@@ -117,6 +117,17 @@ Precautions:
 - Debian 8+
 
 ## Telegram Bot Setup Guie
+X-UI English supports daily traffic notification, panel and sercer login reminder and other functions through Telegram bot.
+
+**Bot Fuctions**
+- Inbounds traffic usage
+- Panel login reminder
+- Server SSH reminder
+- Inbounds expiration alert
+- Traffic warning reminder
+- Daily summery at a pre-defined time
+And more to come.....
+
 Follow these steps correclty to activate X-UI English Telegram Bot:
 1. Head to [Botfather bot](https://t.me/BotFather). Start it and send /newbot command. Follow the Bot's instruvtions for setting a name and username for your bot. Upon a successful new bot creation, you'll see a message like follows. which contains your API key. Keep it somewhere safer. You'll need it later.
 
@@ -127,6 +138,17 @@ Follow these steps correclty to activate X-UI English Telegram Bot:
 ![](media/GETUIDsbot.png)
 
 3. Finally, Paste UID and API Key in the correct text boxes on the X-UI English web panel's Telegram Bot Settings tab; after enabling the bot. Access https://t/me/ `Your Bot Userame`. Use it's instructions to go ahead and use the commands.
+
+### Telegram Bot Timing Format (Crontab Guuide)
+
+Reference Syntax:
+- `*/30 * * * *` Notift every 30 minutes, every hour
+- `30 * * * * *` Notify at the 30s of each point
+- `@hourly`      hourly notifications
+- `@daily`       Daily notification (00:00 AM)
+- `@every 8h`    Notification every 8 hours
+
+More details about Crontab [here](https://support-acquia.force.com/s/article/360004224494-Cron-time-string-format)
 ## Note for Beginner Devs
 Hey Beginner Developer! Appreciate your intrest on playing the codes with this repository. I have seen many people who are not much familiar with none of the languages used here, but still need to do some modifications such as translating the UIs to their native language, modifying telegram bot functions and etc... But after they are done with all of these code modifications, some of them having hard times converting their code into a binary. So they contact me and I have to repeatedly tell them the same procedure. So, here's how you can do it by yourself.
 - Head to `Your fork repository link`/actions . Enable Github Actions if it isn't yet.
