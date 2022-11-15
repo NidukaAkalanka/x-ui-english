@@ -137,7 +137,7 @@ Follow these steps correclty to activate X-UI English Telegram Bot:
 
 ![](media/GETUIDsbot.png)
 
-3. Finally, Paste UID and API Key in the correct text boxes on the X-UI English web panel's Telegram Bot Settings tab; after enabling the bot. Access https://t/me/ `Your Bot Userame`. Use it's instructions to go ahead and use the commands.
+3. Finally, Paste UID and API Key in the correct text boxes on the X-UI English web panel's Telegram Bot Settings tab; after enabling the bot. Access https://t.me/ `Your Bot Userame`. Use it's instructions to go ahead and use the commands.
 
 ### Telegram Bot Timing Format (Crontab Guuide)
 
