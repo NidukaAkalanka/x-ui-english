@@ -51,4 +51,5 @@ require (
 	google.golang.org/genproto v0.0.0-20220916172020-2692e8806bfa // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
+	github.com/go-cmd/cmd v1.4.1 // indirect
 )

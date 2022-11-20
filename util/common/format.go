@@ -19,7 +19,6 @@ func FormatTraffic(trafficBytes int64) (size string) {
 		return fmt.Sprintf("%.2fEB", float64(trafficBytes)/float64(1024*1024*1024*1024*1024))
 	}
 }
-
 func FormatTime(timeseconds uint64) (timeStr string) {
 	if timeseconds < 60 {
 		return fmt.Sprintf("%d seconds", timeseconds)

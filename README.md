@@ -1,24 +1,25 @@
 # X-UI ENGLISH VERSION
 
-Another Translated-to-English Version of X-UI. 
+Another Translated-to-English Version of X-UI; with some of more advanced features implemented. 
  
 A furthur development from [my previous repo](https://github.com/NidukaAkalanka/x-ui-english.old) and
-kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) + [Yu FranzKafka's x-ui](https://github.com/vaxilu/x-ui), forked from [vaxilu's awesome project](https://github.com/vaxilu/x-ui/) which is a Multi-protocol Multi-user Xray Panel
+kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) + [hossinasaadi's x-ui](https://github.com/hossinasaadi/x-ui), which all are forked from [vaxilu's awesome project](https://github.com/vaxilu/x-ui/) : a Multi-protocol Multi-user Xray Panel
 
 # Features
 
 - Everything is in English (Serverside setup + Serverside UI + Web UI)
 - System status monitoring
 - Support multi-user multi-protocol, web page visualization operation
+- Multi UUIDs can be added as users for Vmess and Vless configurations with seperate QR codes
 - Supported protocols: vmess, vless, trojan, shadowsocks, dokodemo-door, socks, http
 - Support to configure more transmission configurations
 - Traffic statistics, limit traffic, limit expiration time
 - Customizable xray configuration templates
 - Support https access panel (bring your own domain name + ssl certificate)
-- Multi UUIDs can be added as users for Vmess and Vless configurations
 - Telegram Bot for basic functions and noticifactions
 - Support one-click SSL certificate application and automatic renewal
 - Can be securely migrated from v2-ui 
+- Can be securely updated from a previous X-UI (CH/EN) version without lossing outbounds list
 - For more advanced configuration items, see the panel for details
 
 # Preview
@@ -55,7 +56,6 @@ systemctl restart x-ui
 
 ## Install using docker
 
-> This docker tutorial and docker image are provided by [Chasing66](https://github.com/Chasing66)
 
 1. Install docker
 
@@ -122,7 +122,7 @@ X-UI English supports daily traffic notification, panel and sercer login reminde
 **Bot Fuctions**
 - Inbounds traffic usage
 - Panel login reminder
-- Server SSH reminder
+- Server SSH login reminder
 - Inbounds expiration alert
 - Traffic warning reminder
 - Daily summery at a pre-defined time
@@ -161,9 +161,16 @@ If you are looking to modify Telegram Bot functions, the Bot's code lives at `/w
 
 ## Issues Fixed until the latest update
 
-- GLIBC 2.28 Not Found -- Fixed on 0.1
-- Workflow error on TG Bot -- Fixed on 0.1
-- One-click SSL installation -- Fixed on 0.1.1
-- Multi-user IDs for Vmess and Vless -- Fixed on 0.2
-- Telegram bot implementation -- Fixed on 0.2
-- Release packages being much heavier in size -- Fixed on 0.2
+### Fixed on 0.1 --
+- GLIBC 2.28 Not Found error
+- Workflow error due to TG Bot -- 
+- One-click SSL installation -- 
+### Fixed on 0.2 --
+- Multi-user IDs for Vmess and Vless 
+- Lack of Telegram bot implementation 
+- Release packages being much heavier in size 
+- Download traffic not being monitored -- Fized on 0.2.1
+### Fixed on 0.2.1 --
+- Lack of seperate QR codes for each multi-users on VMess/Vless
+- Operation hours not being translated to English 
+- Minor bugs with Docker installation 

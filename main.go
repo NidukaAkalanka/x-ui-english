@@ -51,6 +51,7 @@ func runWebServer() {
 	}
 
 	sigCh := make(chan os.Signal, 1)
+	//信号量捕获处理
 	signal.Notify(sigCh, syscall.SIGHUP, syscall.SIGTERM, syscall.SIGKILL)
 	for {
 		sig := <-sigCh
@@ -286,7 +287,6 @@ func main() {
 		if show {
 			showSetting(show)
 		}
-		updateTgbotEnableSts(enabletgbot)
 		if (tgbottoken != "") || (tgbotchatid != 0) || (tgbotRuntime != "") {
 			updateTgbotSetting(tgbottoken, tgbotchatid, tgbotRuntime)
 		}

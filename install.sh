@@ -109,9 +109,7 @@ install_base(){
 }
 
 download_xui(){
-    if [[ -e /usr/local/x-ui/ ]]; then
-        rm -rf /usr/local/x-ui/
-    fi
+
     
     if [ $# == 0 ]; then
         last_version=$(curl -Ls "https://api.github.com/repos/NidukaAkalanka/x-ui-english/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') || last_version=$(curl -sm8 https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/main/config/version >/dev/null 2>&1)
@@ -175,19 +173,20 @@ install_xui() {
     info_bar
     
     if [[ -e /usr/local/x-ui/ ]]; then
-        yellow "The X-UI panel has been installed at present, and confirmed to uninstall the original X-UI panel?"
+        yellow "The X-UI panel has been installed at present. Please confirm you want to update/ re-install X-UI. There would not be any data loss."
         read -rp "Please enter the option [y/n, default n]: " yn
         if [[ $yn =~ "Y"|"y" ]]; then
             systemctl stop x-ui
             systemctl disable x-ui
             rm /etc/systemd/system/x-ui.service -f
             systemctl daemon-reload
-            systemctl reset-failed
+            systemctl reset-failed 
+            mv /etc/x-ui/x-ui.db /etc/x-ui.db.bak # DBackup.oldtmv
             rm /etc/x-ui/ -rf
             rm /usr/local/x-ui/ -rf
             rm /usr/bin/x-ui -f
         else
-            red "Cancelled and uninstalled, the script exits!"
+            red "Cancelled. The script exits!"
             exit 1
         fi
     fi
@@ -198,6 +197,9 @@ install_xui() {
     download_xui $1
     panel_config
     
+    rm /etc/x-ui/x-ui.db -rf # DBackup.newdbdel
+    mv /etc/x-ui.db.bak /etc/x-ui/x-ui.db # DBackup.oldmvback
+
     systemctl daemon-reload
     systemctl enable x-ui >/dev/null 2>&1
     systemctl start x-ui
@@ -238,7 +240,7 @@ install_xui() {
     echo -e "------------------------------------------------------------------------------"
     echo -e "vaxilu            - https://github.com/vaxilu" 
     echo -e "taffychan         - https://github.com/taffychan"  
-    echo -e "LuckyHunter       - https://github.com/Chasing66"
+    echo -e "Hossin Asaadi     - https://github.com/hossinasaadi"
     echo -e "Yu FranzKafka     - https://github.com/FranzKafkaYu"
     echo -e "Niduka Akalanka   - https://github.com/NidukaAkalanka"
     echo -e "--------------------------------------------------------------------------------"

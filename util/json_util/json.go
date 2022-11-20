@@ -6,7 +6,7 @@ import (
 
 type RawMessage []byte
 
-// Marshaljson custom json.rawmessage default behavior
+// MarshalJSON 自定义 json.RawMessage 默认行为
 func (m RawMessage) MarshalJSON() ([]byte, error) {
 	if len(m) == 0 {
 		return []byte("null"), nil

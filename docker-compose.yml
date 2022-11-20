@@ -1,0 +1,10 @@
+version: '0.2.1'
+services:
+  xui:
+    image: NidukaAkalanka/x-ui-english
+    container_name: x-ui
+    volumes:
+      - $PWD/db/:/etc/x-ui/
+      - $PWD/cert/:/root/cert/
+    restart: unless-stopped
+    network_mode: host

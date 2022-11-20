@@ -104,6 +104,7 @@ update() {
         systemctl stop x-ui
         if [[ -e /usr/local/x-ui/ ]]; then
             rm -rf /usr/local/x-ui/
+            mv /etc/x-ui/x-ui.db /etc/x-ui.db.bak # DBackup.oldtmv
         fi
         
         last_version=$(curl -Ls "https://api.github.com/repos/NidukaAkalanka/x-ui-english/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') || last_version=$(curl -sm8 https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/main/config/version)
@@ -131,6 +132,9 @@ update() {
         chmod +x /usr/local/x-ui/x-ui.sh
         chmod +x /usr/bin/x-ui
         
+        rm /etc/x-ui/x-ui.db -rf # DBackup.newdbdel
+        mv /etc/x-ui.db.bak /etc/x-ui/x-ui.db # DBackup.oldmvback
+
         systemctl daemon-reload
         systemctl enable x-ui >/dev/null 2>&1
         systemctl start x-ui
