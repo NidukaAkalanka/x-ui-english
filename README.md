@@ -25,7 +25,7 @@ kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) + [hossin
 # Preview
 ![](media/Web.PNG)
 ![](media/PostInstallation.png)
-# Telegram Bot Preview 
+# Telegram Bot Preview (Temporary not available at the latest version)
 ![](media/TGBot1.PNG)![](media/TGBot2.PNG)
 
 # Single Command Install & upgrade
@@ -116,7 +116,7 @@ Precautions:
 - Ubuntu 16+
 - Debian 8+
 
-## Telegram Bot Setup Guie
+## Telegram Bot Setup Guie (Temporary not available at the latest version)
 X-UI English supports daily traffic notification, panel and sercer login reminder and other functions through Telegram bot.
 
 **Bot Fuctions**
@@ -139,7 +139,7 @@ Follow these steps correclty to activate X-UI English Telegram Bot:
 
 3. Finally, Paste UID and API Key in the correct text boxes on the X-UI English web panel's Telegram Bot Settings tab; after enabling the bot. Access https://t.me/ `Your Bot Userame`. Use it's instructions to go ahead and use the commands.
 
-### Telegram Bot Timing Format (Crontab Guuide)
+### Telegram Bot Timing Format (Crontab Guuide) (Temporary not available at the latest version)
 
 Reference Syntax:
 - `*/30 * * * *` Notift every 30 minutes, every hour
