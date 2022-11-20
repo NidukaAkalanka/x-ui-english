@@ -1,10 +1,8 @@
-{
+{"log": {
+   "loglevel": "warning", 
+   "access": "./access.log"
+ },
   "api": {
-    
-    "log": {
-      "loglevel": "warning", 
-      "access": "./access.log"
-    },
     "services": [
       "HandlerService",
       "LoggerService",
