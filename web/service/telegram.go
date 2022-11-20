@@ -68,7 +68,7 @@ func (s *TelegramService) GetsystemStatus() string {
 	}
 
 	for _, inbound := range inbouds {
-		status += fmt.Sprintf("😎 Node name: %s\r\nport: %d\r\nUplink Traffic↑: %s\r\nDownlink Traffic↓: %s\r\nTotal traffic: %s\r\n", inbound.Remark, inbound.Port, common.FormatTraffic(inbound.Up), common.FormatTraffic(inbound.Down), common.FormatTraffic((inbound.Up + inbound.Down)))
+		status += fmt.Sprintf("😎 Inbound remark: %s\r\nport: %d\r\nUplink Traffic↑: %s\r\nDownlink Traffic↓: %s\r\nTotal traffic: %s\r\n", inbound.Remark, inbound.Port, common.FormatTraffic(inbound.Up), common.FormatTraffic(inbound.Down), common.FormatTraffic((inbound.Up + inbound.Down)))
 		if inbound.ExpiryTime == 0 {
 			status += fmt.Sprintf("⌚ Understanding time: indefinitely\r\n \r\n")
 		} else {
@@ -219,23 +219,25 @@ func (s *TelegramService) StartRun() {
 		//		msg.Text = fmt.Sprintf("XRAY kernel version upgrade to %s succeed", versionStr)
 		//	}
 		case "github":
-			msg.Text = `👩🏻‍💻 Here's the link to the project: https://github.com/NidukaAkalanka/x-ui-english/
+			msg.Text = `
+👩🏻‍💻 Here's the link to the project: https://github.com/NidukaAkalanka/x-ui-english/
              
-            🖋 Author's Note on V0.2: 
-            😶 My schedule is becoming tight so I may not be able to update the project frequently. I'm looking for a contributor who is familiar with Go Telegram Bot API, which is at https://go-telegram-bot-api.dev/ to further improve this Bot. (As you can feel, it's lacking the most user-friendly features like Buttons, Emojis...) If you are interested, please fork the repository and submit a pull request with your changes committed.`
+🖋 Author's Note on V0.2: 
+😶 My schedule is becoming tight so I may not be able to update the project frequently. I'm looking for a contributor who is familiar with Go Telegram Bot API, which is at https://go-telegram-bot-api.dev/ to further improve this Bot. (As you can feel, it's lacking the most user-friendly features like Buttons, Emojis...) If you are interested, please fork the repository and submit a pull request with your changes committed.`
 
 		case "status":
 			msg.Text = s.GetsystemStatus()
 
 		case "start":
-			msg.Text = `😁 Hi there! 
-            💖Welcome to use the X-UI panel Telegram Bot! please send /help to see what can I do`
+			msg.Text = `
+😁 Hi there! 
+💖Welcome to use the X-UI panel Telegram Bot! please send /help to see what can I do`
         case "author":
             msg.Text = `
-            👦🏻 Author  : Niduka Akalanka
-            📍 Github  : https://github.com/NidukaAkalanka
-            📞 Telegram: @NidukaAkalanka (Contact for any issues. Please be patient. As I am a student, I may not be able to reply immediately.)
-            📧 Email   : admin@itsmeniduka.engineer
+👦🏻 Author  : Niduka Akalanka
+📍 Github   : https://github.com/NidukaAkalanka
+📞 Telegram: @NidukaAkalanka (Contact for any issues. Please be patient. As I am a student, I may not be able to reply immediately.)
+📧 Email   : admin@itsmeniduka.engineer
             `
 		default:
 			msg.Text = `⭐ X-UI 0.2 Telegram Bot Commands Menu ⭐
@@ -245,7 +247,7 @@ func (s *TelegramService) StartRun() {
 |-🆘 Get the help information of BOT (this menu)
 | 
 | /delete [PORT] 
-|-♻ Delete the node of the corresponding port
+|-♻ Delete the inbound of the corresponding port
 | 
 | /restart 
 |-🔁 Restart XRAY service
@@ -254,13 +256,13 @@ func (s *TelegramService) StartRun() {
 |-✔ Get the current system state
 | 
 | /enable [PORT]
-|-🧩 Open the node of the corresponding port
+|-🧩 Open the inbound of the corresponding port
 |
 | /disable [PORT]
-|-🚫 Turn off the corresponding port node
+|-🚫 Turn off the corresponding port inbound
 |
 | /clear [PORT]
-|-🧹 Clean up the node traffic of the corresponding port
+|-🧹 Clean up the inbound traffic of the corresponding port
 |
 | /clearall 
 |-🆕 Clean up all inbound traffics and count from 0

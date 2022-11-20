@@ -41,16 +41,8 @@ var i18nFS embed.FS
 
 var startTime = time.Now()
 
-var xuiBeginRunTime string
-
-var isTelegramEnable bool
-
 type wrapAssetsFS struct {
 	embed.FS
-}
-
-func GetXuiStarttime() string {
-	return xuiBeginRunTime
 }
 
 func (f *wrapAssetsFS) Open(name string) (fs.File, error) {
@@ -92,11 +84,11 @@ type Server struct {
 	index  *controller.IndexController
 	server *controller.ServerController
 	xui    *controller.XUIController
+	api    *controller.APIController
 
-	xrayService     service.XrayService
-	settingService  service.SettingService
-	inboundService  service.InboundService
-	telegramService service.TelegramService
+	xrayService    service.XrayService
+	settingService service.SettingService
+	inboundService service.InboundService
 
 	cron *cron.Cron
 
@@ -215,6 +207,7 @@ func (s *Server) initRouter() (*gin.Engine, error) {
 	s.index = controller.NewIndexController(g)
 	s.server = controller.NewServerController(g)
 	s.xui = controller.NewXUIController(g)
+	s.api = controller.NewAPIController(g)
 
 	return engine, nil
 }
@@ -244,11 +237,11 @@ func (s *Server) initI18n(engine *gin.Engine) error {
 		names := make([]string, 0)
 		keyLen := len(key)
 		for i := 0; i < keyLen-1; i++ {
-			if key[i:i+2] == "{{" { // Judge the beginning "{{"
+			if key[i:i+2] == "{{" { // 判断开头 "{{"
 				j := i + 2
 				isFind := false
 				for ; j < keyLen-1; j++ {
-					if key[j:j+2] == "}}" { // end "}}"
+					if key[j:j+2] == "}}" { // 结尾 "}}"
 						isFind = true
 						break
 					}
@@ -263,7 +256,7 @@ func (s *Server) initI18n(engine *gin.Engine) error {
 
 	var localizer *i18n.Localizer
 
-	engine.FuncMap["i18n"] = func(key string, params ...string) (string, error) {
+	I18n := func(key string, params ...string) (string, error) {
 		names := findI18nParamNames(key)
 		if len(names) != len(params) {
 			return "", common.NewError("find names:", names, "---------- params:", params, "---------- num not equal")
@@ -278,10 +271,22 @@ func (s *Server) initI18n(engine *gin.Engine) error {
 		})
 	}
 
+	engine.FuncMap["i18n"]  = I18n;
+
 	engine.Use(func(c *gin.Context) {
-		accept := c.GetHeader("Accept-Language")
-		localizer = i18n.NewLocalizer(bundle, accept)
+		//accept := c.GetHeader("Accept-Language")
+
+		var lang string
+
+		if cookie, err := c.Request.Cookie("lang"); err == nil {
+			lang = cookie.Value
+		} else {
+			lang = c.GetHeader("Accept-Language")
+		}
+
+		localizer = i18n.NewLocalizer(bundle, lang)
 		c.Set("localizer", localizer)
+		c.Set("I18n" , I18n)
 		c.Next()
 	})
 
@@ -293,22 +298,25 @@ func (s *Server) startTask() {
 	if err != nil {
 		logger.Warning("start xray failed:", err)
 	}
-	// Check whether xRAY is running every 30 seconds
+	// 每 30 秒检查一次 xray 是否在运行
 	s.cron.AddJob("@every 30s", job.NewCheckXrayRunningJob())
 
 	go func() {
 		time.Sleep(time.Second * 5)
-		// Statistics every 10 seconds, start the delay for 5 seconds for the first time, and staggered with the time to restart XRAY
+		// 每 10 秒统计一次流量，首次启动延迟 5 秒，与重启 xray 的时间错开
 		s.cron.AddJob("@every 10s", job.NewXrayTrafficJob())
 	}()
 
-	// Check the inbound traffic every 30 seconds that the traffic exceeds and expires
+	// 每 30 秒检查一次 inbound 流量超出和到期的情况
 	s.cron.AddJob("@every 30s", job.NewCheckInboundJob())
-	//Check SSH information every 2S
-	s.cron.AddFunc("@every 2s", func() { job.NewStatsNotifyJob().SSHStatusLoginNotify(xuiBeginRunTime) })
-	// Make a traffic condition every day, 8:30 in Shanghai time at 8:30
+
+	// check client ips from log file every 10 sec
+	s.cron.AddJob("@every 10s", job.NewCheckClientIpJob())
+
+	// 每一天提示一次流量情况,上海时间8点30
 	var entry cron.EntryID
-	if isTelegramEnable {
+	isTgbotenabled, err := s.settingService.GetTgbotenabled()
+	if (err == nil) && (isTgbotenabled) {
 		runtime, err := s.settingService.GetTgbotRuntime()
 		if err != nil || runtime == "" {
 			logger.Errorf("Add NewStatsNotifyJob error[%s],Runtime[%s] invalid,wil run default", err, runtime)
@@ -326,6 +334,7 @@ func (s *Server) startTask() {
 }
 
 func (s *Server) Start() (err error) {
+	//这是一个匿名函数，没没有函数名
 	defer func() {
 		if err != nil {
 			s.Stop()
@@ -385,21 +394,6 @@ func (s *Server) Start() (err error) {
 	}
 	s.listener = listener
 
-	xuiBeginRunTime = time.Now().Format("2006-01-02 15:04:05")
-
-	isTgbotenabled, err := s.settingService.GetTgbotenabled()
-	if (err == nil) && (isTgbotenabled) {
-		isTelegramEnable = true
-
-		go func() {
-			s.telegramService.StartRun()
-			time.Sleep(time.Second * 2)
-		}()
-
-	} else {
-		isTelegramEnable = false
-	}
-
 	s.startTask()
 
 	s.httpServer = &http.Server{
@@ -415,9 +409,6 @@ func (s *Server) Start() (err error) {
 
 func (s *Server) Stop() error {
 	s.cancel()
-	if isTelegramEnable {
-		s.telegramService.StopRunAndClose()
-	}
 	s.xrayService.StopXray()
 	if s.cron != nil {
 		s.cron.Stop()

@@ -1,39 +1,16 @@
 {
   "api": {
+    
+    "log": {
+      "loglevel": "warning", 
+      "access": "./access.log"
+    },
     "services": [
       "HandlerService",
       "LoggerService",
       "StatsService"
     ],
     "tag": "api"
-  },
-  "dns": {
-    "hosts": {
-      "dns.google": [
-        "8.8.8.8",
-        "8.8.4.4"
-      ],
-      "dns.pub": "119.29.29.29",
-      "dns.alidns.com": "223.5.5.5"
-    },
-    "servers": [
-      {
-        "address": "https://1.1.1.1/dns-query",
-        "domains": [
-          "geosite:geolocation-!cn",
-          "geosite:google@cn"
-        ],
-        "expectIPs": [
-          "geoip:!cn"
-        ]
-      },
-      "1.1.1.1",
-      {
-        "address": "localhost",
-        "skipFallback": true
-      }
-    ],
-    "queryStrategy": "UseIP"
   },
   "inbounds": [
     {
@@ -60,13 +37,8 @@
   "policy": {
     "levels": {
       "0": {
-        "handshake": 4,
-        "connIdle": 300,
-        "uplinkOnly": 2,
-        "downlinkOnly": 5,
-        "statsUserUplink": false,
-        "statsUserDownlink": false,
-        "bufferSize": 4
+        "statsUserUplink": true,
+        "statsUserDownlink": true
       }
     },
     "system": {
@@ -75,8 +47,6 @@
     }
   },
   "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "domainMatcher": "hybrid",
     "rules": [
       {
         "inboundTag": [
@@ -87,19 +57,10 @@
       },
       {
         "ip": [
-          "geoip:cn",
           "geoip:private"
         ],
         "outboundTag": "blocked",
         "type": "field"
-      },
-      {
-        "type": "field",
-        "domain": [
-          "geosite:category-ads-all",
-          "geosite:cn"
-        ],
-        "outboundTag": "block"
       },
       {
         "outboundTag": "blocked",

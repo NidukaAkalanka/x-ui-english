@@ -5,21 +5,25 @@
     </a-form-item>
 </a-form>
 <a-form layout="inline">
-    <a-form-item label="Path">
+    <a-form-item label='{{ i18n "path" }}'>
         <a-input v-model.trim="inbound.stream.ws.path"></a-input>
     </a-form-item>
-    <a-form-item label="Request">
+    <a-form-item label='{{ i18n "pages.inbounds.stream.general.requestHeader" }}'>
         <a-row>
-            <a-button size="small" @click="inbound.stream.ws.addHeader('Host', '')">
+            <a-button size="small"
+                      @click="inbound.stream.ws.addHeader('Host', '')">
                 +
             </a-button>
         </a-row>
         <a-input-group v-for="(header, index) in inbound.stream.ws.headers">
-            <a-input style="width: 50%" v-model.trim="header.name" addon-before="name"></a-input>
-            <a-input style="width: 50%" v-model.trim="header.value" addon-before="value">
-                <template slot="addnameAfter">
-                    <a-button size="small" @click="inbound.stream.ws.removeHeader(index)">
-                        -value
+            <a-input style="width: 50%" v-model.trim="header.name"
+                     addon-before='{{ i18n "pages.inbounds.stream.general.name"}}'></a-input>
+            <a-input style="width: 50%" v-model.trim="header.value"
+                     addon-before='{{ i18n "pages.inbounds.stream.general.value" }}'>
+                <template slot="addonAfter">
+                    <a-button size="small"
+                              @click="inbound.stream.ws.removeHeader(index)">
+                        -
                     </a-button>
                 </template>
             </a-input>

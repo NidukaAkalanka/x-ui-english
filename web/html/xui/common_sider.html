@@ -1,33 +1,33 @@
 {{define "menuItems"}}
 <a-menu-item key="{{ .base_path }}xui/">
     <a-icon type="dashboard"></a-icon>
-    <span>System Status</span>
+    <span>{{ i18n "menu.dashboard"}}</span>
 </a-menu-item>
 <a-menu-item key="{{ .base_path }}xui/inbounds">
     <a-icon type="user"></a-icon>
-    <span>Inbound List</span>
+    <span>{{ i18n "menu.inbounds"}}</span>
 </a-menu-item>
 <a-menu-item key="{{ .base_path }}xui/setting">
     <a-icon type="setting"></a-icon>
-    <span>Panel Settings</span>
+    <span>{{ i18n "menu.setting"}}</span>
 </a-menu-item>
 <!--<a-menu-item key="{{ .base_path }}xui/clients">-->
 <!--    <a-icon type="laptop"></a-icon>-->
-<!--    <span>Client</span>-->
+<!--    <span>客户端</span>-->
 <!--</a-menu-item>-->
 <a-sub-menu>
     <template slot="title">
         <a-icon type="link"></a-icon>
-        <span>Other</span>
+        <span>{{ i18n "menu.link"}}</span>
     </template>
-    <a-menu-item key="https://github.com/NidukaAkalanka/x-ui-english">
+    <a-menu-item key="https://github.com/hossinasaadi/x-ui/">
         <a-icon type="github"></a-icon>
         <span>Github</span>
     </a-menu-item>
 </a-sub-menu>
 <a-menu-item key="{{ .base_path }}logout">
     <a-icon type="logout"></a-icon>
-    <span>Sign Out</span>
+    <span>{{ i18n "menu.logout"}}</span>
 </a-menu-item>
 {{end}}
 
@@ -35,12 +35,13 @@
 {{define "commonSider"}}
 <a-layout-sider id="sider" collapsible breakpoint="md" collapsed-width="0">
     <a-menu theme="dark" mode="inline" :selected-keys="['{{ .request_uri }}']"
-        @click="({key}) => key.startsWith('http') ? window.open(key) : location.href = key">
+            @click="({key}) => key.startsWith('http') ? window.open(key) : location.href = key">
         {{template "menuItems" .}}
     </a-menu>
 </a-layout-sider>
-<a-drawer id="sider-drawer" placement="left" :closable="false" @close="siderDrawer.close()"
-    :visible="siderDrawer.visible" :wrap-style="{ padding: 0 }">
+<a-drawer id="sider-drawer" placement="left" :closable="false"
+          @close="siderDrawer.close()"
+          :visible="siderDrawer.visible" :wrap-style="{ padding: 0 }">
     <div class="drawer-handle" @click="siderDrawer.change()" slot="handle">
         <a-icon :type="siderDrawer.visible ? 'close' : 'menu-fold'"></a-icon>
     </div>

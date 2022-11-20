@@ -30,6 +30,11 @@ func (a *InboundController) initRouter(g *gin.RouterGroup) {
 	g.POST("/add", a.addInbound)
 	g.POST("/del/:id", a.delInbound)
 	g.POST("/update/:id", a.updateInbound)
+
+	g.POST("/clientIps/:email", a.getClientIps)
+	g.POST("/clearClientIps/:email", a.clearClientIps)
+	
+
 }
 
 func (a *InboundController) startTask() {
@@ -49,25 +54,38 @@ func (a *InboundController) getInbounds(c *gin.Context) {
 	user := session.GetLoginUser(c)
 	inbounds, err := a.inboundService.GetInbounds(user.Id)
 	if err != nil {
-		jsonMsg(c, "Obtain", err)
+		jsonMsg(c, I18n(c , "pages.inbounds.toasts.obtain"), err)
 		return
 	}
 	jsonObj(c, inbounds, nil)
+}
+func (a *InboundController) getInbound(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		jsonMsg(c, I18n(c , "get"), err)
+		return
+	}
+	inbound, err := a.inboundService.GetInbound(id)
+	if err != nil {
+		jsonMsg(c, I18n(c , "pages.inbounds.toasts.obtain"), err)
+		return
+	}
+	jsonObj(c, inbound, nil)
 }
 
 func (a *InboundController) addInbound(c *gin.Context) {
 	inbound := &model.Inbound{}
 	err := c.ShouldBind(inbound)
 	if err != nil {
-		jsonMsg(c, "Add to", err)
+		jsonMsg(c, I18n(c , "pages.inbounds.addTo"), err)
 		return
 	}
 	user := session.GetLoginUser(c)
 	inbound.UserId = user.Id
 	inbound.Enable = true
 	inbound.Tag = fmt.Sprintf("inbound-%v", inbound.Port)
-	err = a.inboundService.AddInbound(inbound)
-	jsonMsg(c, "Add to", err)
+	inbound, err = a.inboundService.AddInbound(inbound)
+	jsonMsgObj(c, I18n(c , "pages.inbounds.addTo"), inbound, err)
 	if err == nil {
 		a.xrayService.SetToNeedRestart()
 	}
@@ -76,11 +94,11 @@ func (a *InboundController) addInbound(c *gin.Context) {
 func (a *InboundController) delInbound(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
-		jsonMsg(c, "Delete", err)
+		jsonMsg(c, I18n(c , "delete"), err)
 		return
 	}
 	err = a.inboundService.DelInbound(id)
-	jsonMsg(c, "Delete", err)
+	jsonMsgObj(c, I18n(c , "delete"), id, err)
 	if err == nil {
 		a.xrayService.SetToNeedRestart()
 	}
@@ -89,7 +107,7 @@ func (a *InboundController) delInbound(c *gin.Context) {
 func (a *InboundController) updateInbound(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
-		jsonMsg(c, "Update", err)
+		jsonMsg(c, I18n(c , "pages.inbounds.revise"), err)
 		return
 	}
 	inbound := &model.Inbound{
@@ -97,12 +115,32 @@ func (a *InboundController) updateInbound(c *gin.Context) {
 	}
 	err = c.ShouldBind(inbound)
 	if err != nil {
-		jsonMsg(c, "Update", err)
+		jsonMsg(c, I18n(c , "pages.inbounds.revise"), err)
 		return
 	}
-	err = a.inboundService.UpdateInbound(inbound)
-	jsonMsg(c, "Update", err)
+	inbound, err = a.inboundService.UpdateInbound(inbound)
+	jsonMsgObj(c, I18n(c , "pages.inbounds.revise"), inbound, err)
 	if err == nil {
 		a.xrayService.SetToNeedRestart()
 	}
+}
+func (a *InboundController) getClientIps(c *gin.Context) {
+	email := c.Param("email")
+
+	ips , err := a.inboundService.GetInboundClientIps(email)
+	if err != nil {
+		jsonObj(c, "No IP Record", nil)
+		return
+	}
+	jsonObj(c, ips, nil)
+}
+func (a *InboundController) clearClientIps(c *gin.Context) {
+	email := c.Param("email")
+
+	err := a.inboundService.ClearClientIps(email)
+	if err != nil {
+		jsonMsg(c, "Revise", err)
+		return
+	}
+	jsonMsg(c, "Log Cleared", nil)
 }
