@@ -176,12 +176,12 @@ install_xui() {
         yellow "The X-UI panel has been installed at present. Please confirm you want to update/ re-install X-UI. There would not be any data loss."
         read -rp "Please enter the option [y/n, default n]: " yn
         if [[ $yn =~ "Y"|"y" ]]; then
+            mv /etc/x-ui/x-ui.db /etc/x-ui.db.bak # DBackup.oldtmv
             systemctl stop x-ui
             systemctl disable x-ui
             rm /etc/systemd/system/x-ui.service -f
             systemctl daemon-reload
             systemctl reset-failed 
-            mv /etc/x-ui/x-ui.db /etc/x-ui.db.bak # DBackup.oldtmv
             rm /etc/x-ui/ -rf
             rm /usr/local/x-ui/ -rf
             rm /usr/bin/x-ui -f
