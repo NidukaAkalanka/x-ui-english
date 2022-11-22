@@ -173,9 +173,10 @@ install_xui() {
     info_bar
     
     if [[ -e /usr/local/x-ui/ ]]; then
-        yellow "The X-UI panel has been installed at present. Please confirm you want to update/ re-install X-UI. There would not be any data loss."
+        yellow "The X-UI panel has been installed at present. Please confirm you want to update it. There would not be any data loss."
         read -rp "Please enter the option [y/n, default n]: " yn
         if [[ $yn =~ "Y"|"y" ]]; then
+            cd
             mv /etc/x-ui/x-ui.db /etc/x-ui.db.bak # DBackup.oldtmv
             systemctl stop x-ui
             systemctl disable x-ui
@@ -197,6 +198,7 @@ install_xui() {
     download_xui $1
     panel_config
     
+    cd
     rm /etc/x-ui/x-ui.db -rf # DBackup.newdbdel
     mv /etc/x-ui.db.bak /etc/x-ui/x-ui.db # DBackup.oldmvback
 
