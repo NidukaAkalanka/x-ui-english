@@ -58,7 +58,7 @@ archAffix(){
 
 confirm() {
     if [[ $# > 1 ]]; then
-        echo && read -rp "$1 [default$2]: " temp
+        echo && read -rp "$1 [default $2]: " temp
         if [[ x"${temp}" == x"" ]]; then
             temp=$2
         fi
@@ -74,7 +74,7 @@ confirm() {
 }
 
 confirm_restart() {
-    confirm "Whether to restart the X-UI panel, restarting it will also restart XRAY" "y"
+    confirm "Whether to restart the X-UI panel? It will also restart XRAY" "y"
     if [[ $? == 0 ]]; then
         restart
     else
@@ -99,10 +99,11 @@ install() {
 }
 
 update() {
-    read -rp "This function will update the X-UI panel until the latest version, the data will not be lost, whether it continues? [Y/N]: " yn
+    read -rp "This function will update the X-UI panel to the latest version. Data will not be lost. Whether to continues? [Y/N]: " yn
     if [[ $yn =~ "Y"|"y" ]]; then
         systemctl stop x-ui
         if [[ -e /usr/local/x-ui/ ]]; then
+            cd
             rm -rf /usr/local/x-ui/
             mv /etc/x-ui/x-ui.db /etc/x-ui.db.bak # DBackup.oldtmv
         fi
@@ -132,6 +133,7 @@ update() {
         chmod +x /usr/local/x-ui/x-ui.sh
         chmod +x /usr/bin/x-ui
         
+        cd
         rm /etc/x-ui/x-ui.db -rf # DBackup.newdbdel
         mv /etc/x-ui.db.bak /etc/x-ui/x-ui.db # DBackup.oldmvback
 
