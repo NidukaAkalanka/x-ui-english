@@ -19,13 +19,13 @@ kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) + [hossin
 - Telegram Bot for basic functions and noticifactions
 - Support one-click SSL certificate application and automatic renewal
 - Can be securely migrated from v2-ui 
-- Can be securely updated from a previous X-UI (CH/EN) version without lossing outbounds list
+- Can be securely updated from a previous X-UI (CH/EN) version without lossing outbounds
 - For more advanced configuration items, see the panel for details
 
 # Preview
 ![](media/Web.PNG)
 ![](media/PostInstallation.png)
-# Telegram Bot Preview 
+# Telegram Bot Preview (Currently, only for V0.2)
 ![](media/TGBot1.PNG)![](media/TGBot2.PNG)
 
 # Single Command Install & upgrade
@@ -40,9 +40,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/ma
 1. Then download the latest compressed package from https://github.com/NidukaAkalanka/x-ui-english/releases/latest, generally choose `amd64` architecture
 2. Upload the compressed package to the `/root/` directory of the server, and use the `root` user to log in to the server and run following commands
 
-> If your server cpu architecture is not `amd64`, replace `amd64` in the command with another architecture
+> If your server cpu architecture is not `amd64`, replace `*` in the command with another architecture
 
 ````
+cd
 rm x-ui/ /usr/local/x-ui/ /usr/bin/x-ui -rf
 tar zxvf x-ui-linux-amd64.tar.gz
 chmod +x x-ui/x-ui x-ui/bin/xray-linux-* x-ui/x-ui.sh
@@ -82,11 +83,11 @@ docker build -t x-ui .
 
 ## SSL certificate application
 
-The script has 2 built-in SSL certificate application functions. Using a sub-domain is recommended.
+The script has 3 built-in SSL certificate application functions. Using a sub-domain is recommended.
 - ### 1st Method (Recommended. Works for almost any TLD including Freenom free TLDs)
 To use this method to apply for a certificate, your server's IP addres being correctly pointed to a domain or subdomain that you own is the only requirement. (Acme.sh script's 3rd option)
 
-- ### 2nd Method (Use if the above one fails. Would not work for Freenom free TLDs)
+- ### 2nd and 3rd Methods (Use if the above one fails. Would not work for Freenom free TLDs)
 This is not beginner frienly as much as the first one. To use this method, all of the follwoing prerequisites should be met:
 - Knowing the Cloudflare registered email address
 - Knowing the Cloudflare Global API Key
@@ -109,6 +110,27 @@ Precautions:
 - The certificate installation directory is the /root/ directory
 - The certificates applied for by this script are all generic domain name certificates
 
+## IP Limitation and Multi-User on Same Port
+There is almost nothing to explain abount Multi-User thing. You will have seperate QR codes along with traffic calculation, expiry date setting and stuff. 
+
+**The IP limitation woks as follows:**
+
+**Occasion:**
+- There's a client who is using a v2ray config with IP limitation = 1. 
+- He is currently connected to the v2ray server from his PC with Wi-Fi 
+- Then he is trying connect to the server using the same v2ray config from his mobile with 4G **AT THE SAME TIME** 
+
+**Outcome :**
+- There's no impact to his PC's connection
+- On his mobile, he will be succesfully connected for about 10 seconds
+- Then, his mobile's internet connection through v2ray will be stopped. Returning **ERR_CONNECTION_CLOSED**. 
+
+**Occasion:**
+- Afetr some time, the same client, mentioned above, disonnects his PC from v2ray
+- But keeps his mobile trying to connect
+
+**Outcome:**
+- After about 10 seconds past disconnecting the PC, he will regain the connection for his mobile.
 
 ## Suggested OSs
 
@@ -116,7 +138,7 @@ Precautions:
 - Ubuntu 16+
 - Debian 8+
 
-## Telegram Bot Setup Guie 
+## Telegram Bot Setup Guie (Currently, only for V0.2)
 X-UI English supports daily traffic notification, panel and sercer login reminder and other functions through Telegram bot.
 
 **Bot Fuctions**
@@ -163,14 +185,17 @@ If you are looking to modify Telegram Bot functions, the Bot's code lives at `/w
 
 ### Fixed on 0.1 --
 - GLIBC 2.28 Not Found error
-- Workflow error due to TG Bot -- 
-- One-click SSL installation -- 
+- Workflow error due to TG Bot 
+- One-click SSL installation 
 ### Fixed on 0.2 --
 - Multi-user IDs for Vmess and Vless 
 - Lack of Telegram bot implementation 
 - Release packages being much heavier in size 
 - Download traffic not being monitored -- Fized on 0.2.1
 ### Fixed on 0.2.1 --
+- Download data not being calculated
 - Lack of seperate QR codes for each multi-users on VMess/Vless
 - Operation hours not being translated to English 
+- IP limitation not being worked
 - Minor bugs with Docker installation 
+
