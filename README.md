@@ -23,7 +23,7 @@ kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) + [hossin
 - For more advanced configuration items, see the panel for details
 
 # Preview
-![](media/Web.PNG)
+![](media/Web.png)
 ![](media/PostInstallation.png)
 # Telegram Bot Preview (Currently, only for V0.2)
 ![](media/TGBot1.PNG)![](media/TGBot2.PNG)
