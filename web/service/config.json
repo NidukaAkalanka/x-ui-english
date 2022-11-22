@@ -1,4 +1,5 @@
-{"log": {
+{
+  "log": {
    "loglevel": "warning", 
    "access": "./access.log"
  },
