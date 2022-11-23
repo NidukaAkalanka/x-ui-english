@@ -1,4 +1,4 @@
-# X-UI ENGLISH VERSION
+# X-UI ENGLISH VERSION | [X-UI FARSI VERSION](README-fr.md
 
 Another Translated-to-English Version of X-UI; with some of more advanced features implemented. 
  
@@ -133,6 +133,8 @@ There is almost nothing to explain abount Multi-User thing. You will have sepera
 
 **Outcome:**
 - After about 10 seconds past disconnecting the PC, he will regain the connection for his mobile.
+
+**If it is a fresh installation, these functions, specially IP limiting, will work flowlessly. But if yours is an upgrading, they miight not work. In such cases, please refer [here](https://github.com/NidukaAkalanka/x-ui-english/discussions/27)**
 
 ## Suggested OSs
 
