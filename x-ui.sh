@@ -105,7 +105,8 @@ update() {
         if [[ -e /usr/local/x-ui/ ]]; then
             cd
             rm -rf /usr/local/x-ui/
-            mv /etc/x-ui/x-ui.db /etc/x-ui.db.bak # DBackup.oldtmv
+            mv /etc/x-ui/x-ui.db /etc/x-ui-english.db.bak # Backing up Chinese X-UI db (if any)
+            mv /etc/x-uienglish/x-ui-english.db /etc/x-ui-english.db.bak # Backing up English X-UI db 
         fi
         
         last_version=$(curl -Ls "https://api.github.com/repos/NidukaAkalanka/x-ui-english/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') || last_version=$(curl -sm8 https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/main/config/version)
@@ -128,10 +129,6 @@ update() {
         cd x-ui
         chmod +x x-ui bin/xray-linux-$(archAffix)
         cp -f x-ui.service /etc/systemd/system/
-        
-        cd
-        mv /etc/x-ui/x-ui.db /etc/x-ui-english.db.bak # Backing up Chinese X-UI db (if any)
-        mv /etc/x-uienglish/x-ui-english.db /etc/x-ui-english.db.bak # Backing up English X-UI db 
         
         wget -N --no-check-certificate https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/main/x-ui.sh -O /usr/bin/x-ui
         chmod +x /usr/local/x-ui/x-ui.sh
