@@ -22,6 +22,7 @@ kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) + [hossin
 - Can be securely migrated from v2-ui 
 - Can be securely updated from a previous X-UI (CH/EN) version without lossing outbounds
 - For more advanced configuration items, see the panel for details
+- پنل فارسی 
 
 # Preview
 ![](media/Web.png)
