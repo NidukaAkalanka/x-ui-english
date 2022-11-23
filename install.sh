@@ -199,7 +199,6 @@ install_xui() {
     download_xui $1
     
     cd
-    rm /etc/x-ui-english -r  # Deleting empty new db
     mkdir /etc/x-ui-english #makidng a directory to import the backup
     mv /etc/x-ui-english.db.bak /etc/x-ui-english/x-ui-english.db # Importing the backed up db
     
