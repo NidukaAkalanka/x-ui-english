@@ -202,4 +202,5 @@ If you are looking to modify Telegram Bot functions, the Bot's code lives at `/w
 - Operation hours not being translated to English 
 - IP limitation not being worked
 - Minor bugs with Docker installation 
-
+### Fixed on 0.2.1.1 --
+- Error while swithcing Xray version
