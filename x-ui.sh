@@ -105,8 +105,6 @@ update() {
         if [[ -e /usr/local/x-ui/ ]]; then
             cd
             rm -rf /usr/local/x-ui/
-            mv /etc/x-ui/x-ui.db /etc/x-ui-english.db.bak # Backing up Chinese X-UI db (if any)
-            mv /etc/x-uienglish/x-ui-english.db /etc/x-ui-english.db.bak # Backing up English X-UI db 
         fi
         
         last_version=$(curl -Ls "https://api.github.com/repos/NidukaAkalanka/x-ui-english/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') || last_version=$(curl -sm8 https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/main/config/version)
@@ -134,10 +132,6 @@ update() {
         chmod +x /usr/local/x-ui/x-ui.sh
         chmod +x /usr/bin/x-ui
         
-        cd
-        rm /etc/x-ui-english/x-ui-english.db -rf # Deleting empty new db
-        mv /etc/x-ui-english.db.bak /etc/x-ui-english/x-ui-english.db # Bringing the backed up db
-
         systemctl daemon-reload
         systemctl enable x-ui >/dev/null 2>&1
         systemctl start x-ui
