@@ -193,14 +193,15 @@ install_xui() {
         fi
     fi
     
+    cd
+    rm /etc/x-ui-english/x-ui-english.db -rf # Deleting empty new db
+    mv /etc/x-ui-english.db.bak /etc/x-ui-english/x-ui-english.db # Bringing the backed up db
     systemctl stop x-ui >/dev/null 2>&1
     
     install_base
     download_xui $1
+    panel_config
     
-    cd
-    rm /etc/x-ui-english/x-ui-english.db -rf # Deleting empty new db
-    mv /etc/x-ui-english.db.bak /etc/x-ui-english/x-ui-english.db # Bringing the backed up db
 
     systemctl daemon-reload
     systemctl enable x-ui >/dev/null 2>&1
