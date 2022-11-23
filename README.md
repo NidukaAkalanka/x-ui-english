@@ -11,6 +11,7 @@ kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) + [hossin
 - System status monitoring
 - Support multi-user multi-protocol, web page visualization operation
 - Multi UUIDs can be added as users for Vmess and Vless configurations with seperate QR codes
+- IP limitation
 - Supported protocols: vmess, vless, trojan, shadowsocks, dokodemo-door, socks, http
 - Support to configure more transmission configurations
 - Traffic statistics, limit traffic, limit expiration time
