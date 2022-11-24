@@ -1,4 +1,5 @@
-# X-UI ENGLISH VERSION | [X-UI FARSI VERSION](README-fa.md)
+# X-UI ENGLISH VERSION 
+[For X-UI FARSI VERSION](README-fa.md)
 
 Another Translated-to-English Version of X-UI; with some of more advanced features implemented. 
  
