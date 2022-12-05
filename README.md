@@ -135,7 +135,7 @@ There is almost nothing to explain abount Multi-User thing. You will have sepera
 **Outcome:**
 - After about 10 seconds past disconnecting the PC, he will regain the connection for his mobile.
 
-**If it is a fresh installation, these functions, specially IP limiting, will work flowlessly. But if yours is an upgrading, they miight not work. In such cases, please refer [here](https://github.com/NidukaAkalanka/x-ui-english/discussions/27)**
+**If it is a fresh installation, these functions, specially IP limiting, will work flowlessly. But if yours is an upgrading, they miight not work while giving XRAY status : not running. In such cases, please refer [here](https://github.com/NidukaAkalanka/x-ui-english/discussions/27)**
 
 ## Suggested OSs
 
