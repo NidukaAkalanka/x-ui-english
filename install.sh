@@ -81,12 +81,12 @@ check_status(){
     WgcfIPv6Status=$(curl -s6m8 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
     if [[ $WgcfIPv4Status =~ "on"|"plus" ]] || [[ $WgcfIPv6Status =~ "on"|"plus" ]]; then
         wg-quick down wgcf >/dev/null 2>&1
-        v6=$(curl -s6m8 https://ip.gs -k)
-        v4=$(curl -s4m8 https://ip.gs -k)
+        v6=$(curl -s6m8 ip.gs -k)
+        v4=$(curl -s4m8 ip.gs -k)
         wg-quick up wgcf >/dev/null 2>&1
     else
-        v6=$(curl -s6m8 https://ip.gs -k)
-        v4=$(curl -s4m8 https://ip.gs -k)
+        v6=$(curl -s6m8 ip.gs -k)
+        v4=$(curl -s4m8 ip.gs -k)
         if [[ -z $v4 && -n $v6 ]]; then
             yellow "IPv6 only is detected. So the DNS64 parsing server has been added automatically"
             echo -e "nameserver 2606:4700:4700::1111" > /etc/resolv.conf
