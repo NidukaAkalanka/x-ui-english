@@ -464,12 +464,12 @@ check_login_info(){
     WgcfIPv6Status=$(curl -s6m8 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
     if [[ $WgcfIPv4Status =~ "on"|"plus" ]] || [[ $WgcfIPv6Status =~ "on"|"plus" ]]; then
         wg-quick down wgcf >/dev/null 2>&1
-        v6=$(curl -s6m8 https://ip.gs -k)
-        v4=$(curl -s4m8 https://ip.gs -k)
+        v6=$(curl -s6m8 ip.gs -k)
+        v4=$(curl -s4m8 ip.gs -k)
         wg-quick up wgcf >/dev/null 2>&1
     else
-        v6=$(curl -s6m8 https://ip.gs -k)
-        v4=$(curl -s4m8 https://ip.gs -k)
+        v6=$(curl -s6m8 ip.gs -k)
+        v4=$(curl -s4m8 ip.gs -k)
     fi
     
     config_port=$(/usr/local/x-ui/x-ui 2>&1 | grep tcp | awk '{print $5}' | sed "s/://g")
