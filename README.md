@@ -4,7 +4,8 @@
 # Single Command Install & upgrade
 
 ````
-bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/master/install.sh)
+sudo su
+bash <(curl -Ls https://raw.githubusercontent.com/kyumath/x-ui-linux/main/install.sh)
 ````
 
 
