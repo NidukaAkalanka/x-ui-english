@@ -4,7 +4,12 @@
 # Single Command Install & upgrade
 
 ````
-sudo su
+first get root privilage by one of:
+sudo -s
+sudo -i
+sudo su -
+then:
+
 bash <(curl -Ls https://raw.githubusercontent.com/kyumath/x-ui-linux/main/install.sh)
 ````
 
