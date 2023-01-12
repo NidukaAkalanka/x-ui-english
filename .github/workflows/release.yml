@@ -4,8 +4,6 @@ on:
     tags:
       - "*"
   workflow_dispatch:
-  
-permissions: read-all|write-all
 
 jobs:
   release:
