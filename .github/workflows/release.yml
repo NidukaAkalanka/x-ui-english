@@ -7,7 +7,6 @@ on:
 
 jobs:
   release:
-    permissions: write-all
     runs-on: ubuntu-18.04
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
@@ -43,12 +42,13 @@ jobs:
           mv xui-release x-ui
           mkdir bin
           cd bin
-          wget https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip
-          unzip Xray-linux-64.zip
-          rm -f Xray-linux-64.zip geoip.dat geosite.dat
+          wget https://github.com/NidukaAkalanka/Xray-core/releases/latest/download/Xray-linux-amd64.zip
+          unzip Xray-linux-amd64.zip
+          rm -f Xray-linux-amd64.zip
+          mv xray xray-linux-amd64
+          rm -f geoip.dat geosite.dat
           wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
           wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
-          mv xray xray-linux-amd64
           cd ..
           cd ..
       - name: package
@@ -56,7 +56,7 @@ jobs:
       - name: Upload to release
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GAYHUB_TOKEN   }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
         with:
           upload_url: ${{ needs.release.outputs.upload_url }}
           asset_path: x-ui-linux-amd64.tar.gz
@@ -85,12 +85,13 @@ jobs:
           mv xui-release x-ui
           mkdir bin
           cd bin
-          wget https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-arm64-v8a.zip
-          unzip Xray-linux-arm64-v8a.zip
-          rm -f Xray-linux-arm64-v8a.zip geoip.dat geosite.dat
+          wget https://github.com/NidukaAkalanka/Xray-core/releases/latest/download/Xray-linux-arm64.zip
+          unzip Xray-linux-arm64.zip
+          rm -f Xray-linux-arm64.zip
+          mv xray xray-linux-arm64
+          rm -f geoip.dat geosite.dat
           wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
           wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
-          mv xray xray-linux-arm64
           cd ..
           cd ..
       - name: package
@@ -98,7 +99,7 @@ jobs:
       - name: Upload to release
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GAYHUB_TOKEN   }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
         with:
           upload_url: ${{ needs.release.outputs.upload_url }}
           asset_path: x-ui-linux-arm64.tar.gz
@@ -127,7 +128,7 @@ jobs:
           mv xui-release x-ui
           mkdir bin
           cd bin
-          wget https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-s390x.zip
+          wget https://github.com/NidukaAkalanka/Xray-core/releases/latest/download/Xray-linux-s390x.zip
           unzip Xray-linux-s390x.zip
           rm -f Xray-linux-s390x.zip geoip.dat geosite.dat
           wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
@@ -140,7 +141,7 @@ jobs:
       - name: Upload to release
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GAYHUB_TOKEN  }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.release.outputs.upload_url }}
           asset_path: x-ui-linux-s390x.tar.gz
