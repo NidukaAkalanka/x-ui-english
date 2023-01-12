@@ -25,7 +25,6 @@ jobs:
   linuxamd64build:
     name: build x-ui amd64 version
     needs: release
-    permissions: write-all
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3
@@ -67,7 +66,6 @@ jobs:
   linuxarm64build:
     name: build x-ui arm64 version
     needs: release
-    permissions: write-all
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3
@@ -111,7 +109,6 @@ jobs:
   linuxs390xbuild:
     name: build x-ui s390x version
     needs: release
-    permissions: write-all
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3
