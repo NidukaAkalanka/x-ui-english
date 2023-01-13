@@ -394,6 +394,19 @@ func (s *Server) Start() (err error) {
 	}
 	s.listener = listener
 
+	isTgbotenabled, err := s.settingService.GetTgbotenabled()
+	if (err == nil) && (isTgbotenabled) {
+		isTelegramEnable = true
+
+		go func() {
+			s.telegramService.StartRun()
+			time.Sleep(time.Second * 2)
+		}()
+
+	} else {
+		isTelegramEnable = false
+	}
+	
 	s.startTask()
 
 	s.httpServer = &http.Server{
