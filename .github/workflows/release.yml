@@ -7,7 +7,6 @@ on:
 
 jobs:
   release:
-    permissions: write-all
     runs-on: ubuntu-18.04
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
@@ -22,7 +21,6 @@ jobs:
           release_name: ${{ github.ref }}
           draft: false
           prerelease: false
-          allowUpdates: true
   linuxamd64build:
     name: build x-ui amd64 version
     needs: release
