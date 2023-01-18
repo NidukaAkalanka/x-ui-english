@@ -30,7 +30,7 @@
 # پیش نمایش بات تلگرام (Currently, only for V0.2)
 ![](media/TGBot1.PNG)![](media/TGBot2.PNG)
 
-# نصب و ارتقاء تک فرمان
+# نصب و ارتقاء تک دستوره
 
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/master/install.sh)
@@ -42,4 +42,41 @@ bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/ma
 sudo su
 cd
 ````
-2. سپس آخرین بسته فشرده را از https://github.com/NidukaAkalanka/x-ui-english/releases/latest دانلود کنید، به طور کلی معماری «amd64» را انتخاب کنید.
+2. سپس آخرین بسته فشرده را از https://github.com/NidukaAkalanka/x-ui-english/releases/latest دانلود کنید، به طور معمول معماری «amd64» را انتخاب کنید.
+
+3. دستورات زیر را به ترتیب اجرا کنید:
+
+> اگر معماری cpu سرور شما "amd64" نیست، "*" را در دستور با معماری دیگری جایگزین کنید
+````
+rm x-ui/ /usr/local/x-ui/ /usr/bin/x-ui -rf
+tar zxvf x-ui-linux-amd64.tar.gz
+chmod +x x-ui/x-ui x-ui/bin/xray-linux-* x-ui/x-ui.sh
+cp x-ui/x-ui.sh /usr/bin/x-ui
+cp -f x-ui/x-ui.service /etc/systemd/system/
+mv x-ui/ /usr/local/
+systemctl daemon-reload
+systemctl enable x-ui
+systemctl restart x-ui
+````
+
+## نصب با استفاده از docker
+1. docker را نصب کنید
+
+```shell
+curl -fsSL https://get.docker.com | sh
+````
+2. x-ui را نصب کنید
+```shell
+mkdir x-ui && cd x-ui
+docker run -itd --network=host \
+    -v $PWD/db/:/etc/x-ui/ \
+    -v $PWD/cert/:/root/cert/ \
+    --name x-ui --restart=unless-stopped \
+    enwaiax/x-ui:latest
+````
+
+> ایمیج خود را بسازید
+> ```shell
+docker build -t x-ui .
+````
+
