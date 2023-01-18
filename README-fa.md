@@ -24,7 +24,17 @@
 - می تواند به طور ایمن از نسخه قبلی X-UI (CH/EN) بدون از دست دادن خروجی به روزرسانی شود
 - برای موارد پیکربندی پیشرفته تر، برای جزئیات بیشتر به پنل مراجعه کنید
 
+# پیش نمایش
+![](media/Web.png)
+![](media/PostInstallation.png)
+# پیش نمایش بات تلگرام (Currently, only for V0.2)
+![](media/TGBot1.PNG)![](media/TGBot2.PNG)
 
+# نصب و ارتقاء تک فرمان
+
+```
+bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/master/install.sh)
+````
 ## نصب و ارتقاء دستی
 
 1. ابتدا سیستم خود را آپدیت کنید و دستورات زیر را اجرا کنید. (باید مجوزهای کاربر روت را داشته باشد)
@@ -32,3 +42,4 @@
 sudo su
 cd
 ````
+2. سپس آخرین بسته فشرده را از https://github.com/NidukaAkalanka/x-ui-english/releases/latest دانلود کنید، به طور کلی معماری «amd64» را انتخاب کنید.
