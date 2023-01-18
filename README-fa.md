@@ -60,12 +60,11 @@ systemctl restart x-ui
 ````
 
 ## نصب با استفاده از docker
-1. docker را نصب کنید
-
+1. ابتدا docker را نصب کنید
 ```shell
 curl -fsSL https://get.docker.com | sh
 ````
-2. x-ui را نصب کنید
+2. سپس x-ui را نصب کنید
 ```shell
 mkdir x-ui && cd x-ui
 docker run -itd --network=host \
@@ -76,7 +75,7 @@ docker run -itd --network=host \
 ````
 
 > ایمیج خود را بسازید
-> ```shell
+ ```shell
 docker build -t x-ui .
 ````
 
