@@ -199,7 +199,7 @@ If you are looking to modify Telegram Bot functions, the Bot's code lives at `/w
 - Multi-user IDs for Vmess and Vless 
 - Lack of Telegram bot implementation 
 - Release packages being much heavier in size 
-- Download traffic not being monitored -- Fized on 0.2.1
+- Download traffic not being monitored
 ### Fixed on 0.2.1 --
 - Download data not being calculated
 - Lack of seperate QR codes for each multi-users on VMess/Vless
@@ -208,3 +208,5 @@ If you are looking to modify Telegram Bot functions, the Bot's code lives at `/w
 - Minor bugs with Docker installation 
 ### Fixed on 0.2.1.1 --
 - Error while swithcing Xray version
+### Fixed on 0.2.1.2 --
+- ip.gs error causing IP scraping errors
