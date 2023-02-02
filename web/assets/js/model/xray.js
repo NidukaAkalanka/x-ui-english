@@ -951,7 +951,7 @@ class Inbound extends XrayCommonClass {
 
         let obj = {
             v: '2',
-            ps: remark,
+            ps: this.settings.vmesses[clientIndex].email,
             add: address,
             port: this.port,
             id: this.settings.vmesses[clientIndex].id,
@@ -1037,7 +1037,7 @@ class Inbound extends XrayCommonClass {
         for (const [key, value] of params) {
             url.searchParams.set(key, value)
         }
-        url.hash = encodeURIComponent(remark);
+        url.hash = encodeURIComponent(settings.vlesses[clientIndex].email);
         return url.toString();
     }
 
