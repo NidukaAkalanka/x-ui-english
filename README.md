@@ -1,7 +1,7 @@
-# X-UI ENGLISH VERSION 
+# X-UI ENGLISH VERSION (has backdoor)
 **this is just a copy of https://github.com/NidukaAkalanka/x-ui-english**
 
-this repo has backdoor , dont use this
+# this repo has backdoor , dont use this
 
 # Single Command Install & upgrade
 
