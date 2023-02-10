@@ -11,7 +11,7 @@ kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) + [hossin
 - Everything is in English (Serverside setup + Serverside UI + Web UI)
 - System status monitoring
 - Support multi-user multi-protocol, web page visualization operation
-- Multi UUIDs can be added as users for Vmess and Vless configurations with seperate QR codes
+- Multi UUIDs can be added as users for Vmess and Vless configurations with separate QR codes
 - IP limitation
 - Supported protocols: vmess, vless, trojan, shadowsocks, dokodemo-door, socks, http
 - Support to configure more transmission configurations
@@ -117,7 +117,7 @@ Precautions:
 - The certificates applied for by this script are all generic domain name certificates
 
 ## IP Limitation and Multi-User on Same Port
-There is almost nothing to explain abount Multi-User thing. You will have seperate QR codes along with traffic calculation, expiry date setting and stuff. 
+There is almost nothing to explain abount Multi-User thing. You will have separate QR codes along with traffic calculation, expiry date setting and stuff. 
 
 **The IP limitation woks as follows:**
 
@@ -202,7 +202,7 @@ If you are looking to modify Telegram Bot functions, the Bot's code lives at `/w
 - Download traffic not being monitored
 ### Fixed on 0.2.1 --
 - Download data not being calculated
-- Lack of seperate QR codes for each multi-users on VMess/Vless
+- Lack of separate QR codes for each multi-users on VMess/Vless
 - Operation hours not being translated to English 
 - IP limitation not being worked
 - Minor bugs with Docker installation 
