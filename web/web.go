@@ -446,6 +446,12 @@ func (s *Server) Stop() error {
 	if s.listener != nil {
 		err2 = s.listener.Close()
 	}
+        isTgbotenabled, err := s.settingService.GetTgbotenabled()
+        if (err == nil) && (isTgbotenabled) {
+                go func() {
+                        s.telegramService.StopRunAndClose()
+                }()
+        }	
 	return common.Combine(err1, err2)
 }
 
