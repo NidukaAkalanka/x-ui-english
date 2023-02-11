@@ -39,6 +39,11 @@ var htmlFS embed.FS
 //go:embed translation/*
 var i18nFS embed.FS
 
+//restore work telegram bot start
+var startTime = time.Now()
+var isTelegramEnable bool
+//restore work telegram bot end
+
 var startTime = time.Now()
 
 type wrapAssetsFS struct {
@@ -89,6 +94,9 @@ type Server struct {
 	xrayService    service.XrayService
 	settingService service.SettingService
 	inboundService service.InboundService
+//restore work telegram bot start
+        telegramService service.TelegramService
+//restore work telegram bot end
 
 	cron *cron.Cron
 
@@ -393,6 +401,23 @@ func (s *Server) Start() (err error) {
 		logger.Info("web server run http on", listener.Addr())
 	}
 	s.listener = listener
+//restore work telegram bot start
+        xuiBeginRunTime = time.Now().Format("2006-01-02 15:04:05")
+
+        isTgbotenabled, err := s.settingService.GetTgbotenabled()
+        if (err == nil) && (isTgbotenabled) {
+                isTelegramEnable = true
+
+                go func() {
+                        s.telegramService.StartRun()
+                        time.Sleep(time.Second * 2)
+                }()
+
+        } else {
+                isTelegramEnable = false
+        }
+
+//restore work telegram bot end
 
 	s.startTask()
 
@@ -431,3 +456,4 @@ func (s *Server) GetCtx() context.Context {
 func (s *Server) GetCron() *cron.Cron {
 	return s.cron
 }
+
