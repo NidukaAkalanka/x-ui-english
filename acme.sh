@@ -169,7 +169,7 @@ acme_standalone(){
             green "Domain name ${domain} Currently pointed IP: ($domainIP)"
             red "The current domain name's resolved IP does not match the public IP used of the server"
             green "Suggestions:"
-            yellow "1. Please check whether domain is correctly pointed to the server's current pub;ic IP"
+            yellow "1. Please check whether domain is correctly pointed to the server's current public IP"
             yellow "2. Please make sure that Cloudflare Proxy is closed (only DNS)"
             yellow "3. The script could be outdated. Please open up a issue in Github at https://github.com/NidukaAkalanka/x-ui-english/issues"
             exit 1
