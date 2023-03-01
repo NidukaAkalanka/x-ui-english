@@ -526,7 +526,7 @@ show_menu() {
 --------------------------------------------------------------------------------
   ${GREEN}1.${PLAIN} Install X-UI
   ${GREEN}2.${PLAIN} Update X-UI
-  ${GREEN}3.${PLAIN} Uninstalled X-UI
+  ${GREEN}3.${PLAIN} Uninstall X-UI
 --------------------------------------------------------------------------------
   ${GREEN}4.${PLAIN} Reset Username Password
   ${GREEN}5.${PLAIN} Reset Panel Settings
