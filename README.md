@@ -1,3 +1,10 @@
+[![Total Downloads](https://img.shields.io/github/downloads/NidukaAkalanka/x-ui-english/total.svg)](https://github.com/NidukaAkalanka/x-ui-english/)
+[![Last Version](https://img.shields.io/github/release/NidukaAkalanka/x-ui-english/all.svg)](https://github.com/NidukaAkalanka/x-ui-english/)
+[![Last Release Date](https://img.shields.io/github/release-date/NidukaAkalanka/x-ui-english.svg)](https://github.com/NidukaAkalanka/x-ui-english/)
+[![GitHub Stars](https://img.shields.io/tokei/lines/github/NidukaAkalanka/x-ui-english.svg)](https://github.com/NidukaAkalanka/x-ui-english/)
+[![GitHub Stars](https://img.shields.io/github/stars/NidukaAkalanka/x-ui-english.svg)](https://github.com/NidukaAkalanka/x-ui-english/)
+[![GitHub Forks](https://img.shields.io/github/forks/NidukaAkalanka/x-ui-english.svg)](https://github.com/NidukaAkalanka/x-ui-english/)
+
 # X-UI ENGLISH VERSION 
 [For X-UI FARSI VERSION](README-fa.md)
 
