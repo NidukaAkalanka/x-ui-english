@@ -139,7 +139,7 @@ There is almost nothing to explain abount Multi-User thing. You will have separa
 - Then, his mobile's internet connection through v2ray will be stopped. Returning **ERR_CONNECTION_CLOSED**. 
 
 **Occasion:**
-- After some time, the same client, mentioned above, disonnects his PC from v2ray
+- Afetr some time, the same client, mentioned above, disonnects his PC from v2ray
 - But keeps his mobile trying to connect
 
 **Outcome:**
