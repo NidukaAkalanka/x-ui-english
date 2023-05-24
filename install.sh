@@ -160,7 +160,7 @@ panel_config() {
     [[ -z $config_port ]] && config_port=$(shuf -i 1000-65535 -n 1)
     until [[ -z $(ss -ntlp | awk '{print $4}' | grep -w "$config_port") ]]; do
         if [[ -n $(ss -ntlp | awk '{print $4}' | grep -w  "$config_port") ]]; then
-            yellow "The port you set is currently in uese, please reassign another port"
+            yellow "The port you set is currently in use, please reassign another port"
             read -rp "Please set the panel access port [default ia a random port]: " config_port
             [[ -z $config_port ]] && config_port=$(shuf -i 1000-65535 -n 1)
         fi
