@@ -149,7 +149,7 @@ acme_standalone(){
     read -rp "Please enter the pointed domain / sub-domain name: " domain
     [[ -z $domain ]] && red "Given domain is invalid. Please use example.com / sub.example.com" && exit 1
     green "The given domain name：$domain" && sleep 1
-    domainIP=$(curl -sm8 ipget.net/?ip="${domain}")
+    domainIP=$(dig +short $domain)
     
     if [[ $domainIP == $ipv6 ]]; then
         bash ~/.acme.sh/acme.sh --issue -d ${domain} --standalone -k ec-256 --listen-v6 --insecure
