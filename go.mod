@@ -3,7 +3,7 @@ module x-ui
 go 1.19
 
 require (
-	github.com/BurntSushi/toml v1.2.0
+	github.com/BurntSushi/toml v1.2.1
 	github.com/Workiva/go-datastructures v1.0.53
 	github.com/gin-contrib/sessions v0.0.5
 	github.com/gin-gonic/gin v1.8.1
