@@ -16,7 +16,7 @@ require (
 	github.com/xtls/xray-core v1.6.0
 	go.uber.org/atomic v1.10.0
 	golang.org/x/text v0.23.0
-	google.golang.org/grpc v1.49.0
+	google.golang.org/grpc v1.73.0
 	gorm.io/driver/sqlite v1.4.4
 	gorm.io/gorm v1.24.0
 )
@@ -31,7 +31,7 @@ require (
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.14.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
-	github.com/golang/protobuf v1.5.2 // indirect
+	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/gorilla/context v1.1.1 // indirect
 	github.com/gorilla/securecookie v1.1.1 // indirect
 	github.com/gorilla/sessions v1.2.1 // indirect
@@ -56,6 +56,6 @@ require (
 	golang.org/x/net v0.38.0 // indirect
 	golang.org/x/sys v0.31.0 // indirect
 	google.golang.org/genproto v0.0.0-20220916172020-2692e8806bfa // indirect
-	google.golang.org/protobuf v1.33.0 // indirect
+	google.golang.org/protobuf v1.36.6 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
