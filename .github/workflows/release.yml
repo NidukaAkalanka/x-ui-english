@@ -26,7 +26,7 @@ jobs:
     needs: release
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
@@ -67,7 +67,7 @@ jobs:
     needs: release
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
@@ -110,7 +110,7 @@ jobs:
     needs: release
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
